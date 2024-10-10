@@ -1,11 +1,11 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const cores = {
   rosa: '#E66767',
   rosaclaro: '#FFEBD9',
   amarela: '#FFB930',
-  branca: 'rgba(255, 255, 255, 1)',
-};
+  branca: 'rgba(255, 255, 255, 1)'
+}
 
 export const GlobalCss = createGlobalStyle`
   * {
@@ -29,4 +29,4 @@ export const GlobalCss = createGlobalStyle`
     width: 100%;
     margin: 0 auto;
   }
-`;
+`
