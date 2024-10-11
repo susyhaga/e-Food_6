@@ -69,15 +69,11 @@ export const RestImg = styled.div`
   img {
     position: relative;
     background-size: 100%;
-    top: 50%;
-    left: 50%;
+    backgroun-position: center;
     width: 100%;
     height: 100%;
     max-height: 280px;
-    object-fit: cover;
-    object-position: center;
-    transform: translate(-50%, -50%);
-    display: block;
+
   }
 
   .textsDiv {
