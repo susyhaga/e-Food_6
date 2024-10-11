@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import { cores } from '../../global'
 
 export const HeaderBar = styled.header`
-  width: 100%; // Garantir que o RestImg ocupe a largura total
-
+  width: 100%;
   color: ${cores.branca};
 
   a {
@@ -15,6 +14,7 @@ export const HeaderBar = styled.header`
 
 export const ImgHeader = styled.div`
   height: 186px;
+  width: 100vw;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
@@ -27,8 +27,10 @@ export const ImgHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 auto;
+    margin-left: 214px;
+    gap: 300px;
     height: 100%;
+    width: 100%;
   }
 
   h4 {
@@ -37,20 +39,21 @@ export const ImgHeader = styled.div`
 `
 
 export const LinkCard = styled.a`
-  display: flex;
-  align-items: center;
-  margin-right: 171px;
+  width: 100%;
+  white-space: nowrap;
 `
 
 export const RestImg = styled.div`
-  width: 1366px;
+  width: 100%;
   height: 280px;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 0;
+  padding: 0;
 
   &::before {
     content: '';
@@ -64,32 +67,39 @@ export const RestImg = styled.div`
   }
 
   img {
-    margin-bottom: 80px;
-    object-fit: cover;
     position: relative;
-    z-index: 0;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    object-position: center;
+    transform: translate(-50%, -50%);
+    display: block;
   }
 
   .textsDiv {
     position: absolute;
-    left: 0;
+    left: 30%;
+    transform: translateX(-50%);
     z-index: 6;
     color: ${cores.branca};
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 0 171px;
+    padding: 0;
+    margin: 0;
+  }
 
-    p {
-      font-size: 32px;
-      font-weight: 100;
-      line-height: 37.5px;
-      margin-bottom: 157px;
-    }
+  p {
+    font-size: 32px;
+    font-weight: 100;
+    line-height: 37.5px;
+    margin-bottom: 157px;
+  }
 
-    h4 {
-      font-size: 32px;
-      margin: 0;
-    }
+  h4 {
+    font-size: 32px;
+    margin: 0;
   }
 `

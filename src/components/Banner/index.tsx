@@ -11,7 +11,6 @@ const Banner = () => {
       }}
     >
       <div className="container">
-        {/* Mantendo o Link existente */}
         <Link to="/restaurant">
           <img src={logo} alt="logo e-food" />
         </Link>

@@ -10,11 +10,10 @@ export const ButtonContainer = styled.button`
   padding: 8px 16px;
   text-decoration: none;
   margin-left: 8px;
-
 `
 export const ButtonLink = styled(Link)`
   color: ${cores.branca};
-  background-color:${cores.rosa};
+  background-color: ${cores.rosa};
   font-size: 16px;
   font-weight: bold;
   padding: 8px 16px;

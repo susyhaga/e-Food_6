@@ -10,6 +10,7 @@ export const cores = {
 export const GlobalCss = createGlobalStyle`
   * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
     list-style: none;
@@ -17,16 +18,14 @@ export const GlobalCss = createGlobalStyle`
 
   body {
     background-color: ${cores.branca};
-    padding-top: 20px;
+    padding-top: 40px;
     overflow-x: hidden;
-    width: 100%;
-    max-width: 1366px;
-    margin: 0 auto;
   }
 
-
-  .container {
+  .container{
+    max-width: 1024px;
     width: 100%;
     margin: 0 auto;
+    color: ${cores.branca}
   }
 `
