@@ -68,6 +68,7 @@ export const RestImg = styled.div`
 
   img {
     position: relative;
+    background-size: 100%;
     top: 50%;
     left: 50%;
     width: 100%;
