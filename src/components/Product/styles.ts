@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { cores } from '../../global'
-import { Link } from 'react-router-dom'
 
 // Definição do Card com o tipo isRestaurant
 export const Card = styled.div<{ isRestaurant?: boolean }>`
@@ -141,36 +140,43 @@ export const Star = styled.div<{ isRestaurant?: boolean }>`
     `}
   }
 `
-
-export const StyledLink = styled(Link)<{ isRestaurant?: boolean }>`
-  text-decoration: none;
-  color: ${({ isRestaurant }) => (isRestaurant ? cores.branca : cores.rosa)};
+export const Button = styled.button<{ isRestaurant?: boolean }>`
+  border: none;
   font-weight: bold;
-  margin-top: 8px; // Mantive a margin aqui
-  display: inline-block;
-  padding: 4px 6px;
-  margin: 8px;
   font-size: 14px;
-  line-height: 16.41px;
-  color: ${cores.branca};
-  background-color: ${cores.rosa};
-  width: 82px;
-  height: 24px;
+  line-height: 16px;
+  cursor: pointer;
+  padding: 8px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 8px;
 
+  /* Cor e fundo padrão */
+  color: ${({ isRestaurant }) => (isRestaurant ? cores.rosa : cores.branca)};
+  background-color: ${({ isRestaurant }) =>
+    isRestaurant ? cores.branca : cores.rosa};
+
+  /* Estilo específico para o botão na rota restaurant */
   ${({ isRestaurant }) =>
     isRestaurant &&
     `
-      color:${cores.rosa};
-      background-color: ${cores.branca};
-      width: auto;
-      height: 24px;
-      display: flex;
-      margin-left: 1px;
-      margin-right: 1px;
-      margin-bottom: 4px;
-      align-items: start;
-      justify-content: center;
-      padding: 4px;
+    color: ${cores.rosa}; /* Cor do texto para "Adicionar ao Carrinho" */
+    background-color: ${cores.branca}; /* Fundo para "Adicionar ao Carrinho" */
+    height: 24px; /* Ajuste a altura aqui */
+    padding: 4px; /* Ajuste o padding se necessário */
+    margin-bottom: 8px;
+  `}
 
+  width: ${({ isRestaurant }) => (isRestaurant ? '100%' : 'auto')};
+  text-align: center;
+
+  /* Estilos adicionais quando isRestaurant é verdadeiro */
+  ${({ isRestaurant }) =>
+    isRestaurant &&
+    `
+      margin-left: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
   `}
 `

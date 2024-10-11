@@ -6,11 +6,11 @@ import {
   Infos,
   ClassificationContainer,
   Star,
-  StyledLink
+  Button
 } from './styles'
 import Tag from '../Tag'
 import star from '../../assets/images/star.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 type Props = {
   title: string
@@ -31,8 +31,15 @@ const Product = ({
   isRestaurant,
   isHome
 }: Props) => {
+  const navigate = useNavigate()
+
+  const handleStyledLinkClick = () => {
+    navigate(isRestaurant ? '/' : '/restaurant')
+  }
+
   return (
     <Card isRestaurant={isRestaurant}>
+      {/* Mantendo o Link existente */}
       <Link to="/restaurant" aria-label={`Ir para ${title}`}>
         <img src={image} alt={`Imagem de ${title}`} />
       </Link>
@@ -57,17 +64,9 @@ const Product = ({
 
       <div className="descricao-container">
         <Descricao isRestaurant={isRestaurant}>{description}</Descricao>
-        <StyledLink
-          to={isRestaurant ? './restaurant' : '/'}
-          title={
-            isRestaurant
-              ? 'Adicionar ao carrinho'
-              : 'Saiba mais sobre o restaurante'
-          }
-          isRestaurant={isRestaurant}
-        >
+        <Button onClick={handleStyledLinkClick} isRestaurant={isRestaurant}>
           {isRestaurant ? 'Adicionar ao carrinho' : 'Saiba mais'}
-        </StyledLink>
+        </Button>
       </div>
     </Card>
   )

@@ -20,12 +20,10 @@ const ProductsList = ({
 }: Props) => {
   const location = useLocation() // hook para obter a localização
 
-  // Determine a rota atual apenas se isRestaurant não foi passado como prop
   const isCurrentRestaurant =
     isRestaurant || location.pathname === '/restaurant'
 
-  // Verifique se estamos na rota "/"
-  const isHome = location.pathname === '/' // Isso indica que estamos na rota "/"
+  const isHome = location.pathname === '/'
 
   return (
     <Container background={background} isRestaurant={isCurrentRestaurant}>
