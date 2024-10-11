@@ -46,7 +46,9 @@ export const LinkCard = styled.a`
 export const RestImg = styled.div`
   width: 100%;
   height: 280px;
-  position: relative;
+   background-size: 100%;
+   bckground-repeat: norepeat;
+   backgound- position: center;
   overflow: hidden;
   display: flex;
   flex-direction: column;
