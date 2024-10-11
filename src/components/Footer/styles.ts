@@ -9,14 +9,14 @@ export const Container = styled.footer`
   margin-top: 120px;
   padding: 36px 0;
   font-size: 14px;
-  width: 100%; // ocupa toda a largura
+  width: 100%;
   height: auto;
 
   .container {
-    width: 100%; // ocupa toda a largura
-    max-width: none; // Remover qualquer largura máxima
-    margin: 0 auto; // Isso pode não ser necessário se você quer que ocupe toda a largura
-    padding: 0; // Remover padding para evitar espaço em branco
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,8 +25,8 @@ export const Container = styled.footer`
 
   p {
     font-size: 10px;
-    width: 100%; // Ajuste para 100% se necessário
-    max-width: 480px; // pode manter um tamanho máximo, mas vai ocupar 100% da largura
+    width: 100%;
+    max-width: 480px;
     height: 24px;
     display: flex;
     text-align: center;

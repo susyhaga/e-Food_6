@@ -46,9 +46,7 @@ export const LinkCard = styled.a`
 export const RestImg = styled.div`
   width: 100%;
   height: 280px;
-   background-size: 100%;
-   bckground-repeat: norepeat;
-   backgound- position: center;
+  position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -69,13 +67,19 @@ export const RestImg = styled.div`
   }
 
   img {
-    position: relative;
-    background-size: 100%;
-    backgroun-position: center;
     width: 100%;
-    height: 100%;
-    max-height: 280px;
-
+    height: 280px;
+    background-size: 100%;
+    background-repeat: norepeat;
+    background-position: center;
+    object-fit: cover;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
   }
 
   .textsDiv {
