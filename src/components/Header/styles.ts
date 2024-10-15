@@ -70,24 +70,26 @@ export const RestImg = styled.div`
 
   .textsDiv {
     width: 100%;
-    justify-content: center;
-    margin-left: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    justify-content: start;
+    margin-left: 800px;
     position: absolute;
     z-index: 6;
     color: ${cores.branca};
-    display: flex;
-    flex-direction: column;
-    align-items: start; /* Centralizando os itens */
     gap: 156.5px; /* Espaçamento entre os elementos */
     font-size: 32px;
   }
 
   p {
     font-weight: 100;
+    margin-top: 25px;
   }
 
   h4 {
     font-size: 32px;
-    margin: 0;
+    padding-bottom: 32px;
   }
 `
