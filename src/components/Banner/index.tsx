@@ -6,6 +6,7 @@ import logo from '../../assets/images/logo.png'
 const Banner = () => {
   return (
     <Img
+      className="container"
       style={{
         backgroundImage: `url(${bannerImg})`
       }}

@@ -26,10 +26,8 @@ export const ImgHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
-    width: calc(100% - 40px); /* Adicionando padding lateral */
-    padding: 0 20px; /* Padding para evitar que os itens fiquem nas bordas */
-    gap: 290px; /* Espaçamento entre os elementos */
+    width: calc(100% - 50px);
+    gap: 310px;
   }
 `
 
@@ -72,7 +70,8 @@ export const RestImg = styled.div`
 
   .textsDiv {
     width: 100%;
-    margin-left: 820px;
+    justify-content: center;
+    margin-left: 1000px;
     position: absolute;
     z-index: 6;
     color: ${cores.branca};
