@@ -3,6 +3,7 @@ import { cores } from '../../global'
 
 // Definição do Card com o tipo isRestaurant
 export const Card = styled.div<{ isRestaurant?: boolean }>`
+  width: 100vw;
   border: ${({ isRestaurant }) =>
     isRestaurant ? '8px solid ' + cores.rosa : '1px solid ' + cores.rosa};
   position: relative;
@@ -13,8 +14,7 @@ export const Card = styled.div<{ isRestaurant?: boolean }>`
   box-sizing: border-box;
   width: ${({ isRestaurant }) => (isRestaurant ? '320px' : '472px')};
   margin-right: ${({ isRestaurant }) => (isRestaurant ? '32px' : '80px')};
-  margin-bottom: ${({ isRestaurant }) => (isRestaurant ? '32px' : '48px')};
-
+  margin-bottom: 32px;
   img {
     width: 100%;
     object-fit: cover;
@@ -31,10 +31,6 @@ export const Card = styled.div<{ isRestaurant?: boolean }>`
   }
 
   .container {
-    gap: 32px;
-    width: ${({ isRestaurant }) => (isRestaurant ? '320px' : '472px')};
-    margin-right: ${({ isRestaurant }) => (isRestaurant ? '32px' : '80px')};
-    margin-bottom: ${({ isRestaurant }) => (isRestaurant ? '32px' : '48px')};
   }
 `
 

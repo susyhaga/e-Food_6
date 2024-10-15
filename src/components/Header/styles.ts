@@ -25,9 +25,9 @@ export const ImgHeader = styled.div`
   .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: calc(100% - 50px);
-    gap: 310px;
+    margin: 0 auto;
+    width: calc(100% - 40px);
+    gap: 290px;
   }
 `
 
