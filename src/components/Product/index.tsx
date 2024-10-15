@@ -38,7 +38,7 @@ const Product = ({
   }
 
   return (
-    <Card isRestaurant={isRestaurant}>
+    <Card className="container" isRestaurant={isRestaurant}>
       {/* Mantendo o Link existente */}
       <Link to="/restaurant" aria-label={`Ir para ${title}`}>
         <img src={image} alt={`Imagem de ${title}`} />

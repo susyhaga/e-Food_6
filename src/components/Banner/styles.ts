@@ -7,10 +7,10 @@ export const Img = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   font-weight: bold;
-  width: 100%; // ocupa toda a largura
-  min-height: 384px; // mantém a altura mínima
-  margin: 0; // remove margens
-  padding: 0; // remove padding se houver
+  width: 100%;
+  min-height: 384px;
+  margin: 0;
+  padding: 0;
   position: relative;
 
   .container {

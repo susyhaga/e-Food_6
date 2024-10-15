@@ -29,6 +29,10 @@ export const Card = styled.div<{ isRestaurant?: boolean }>`
       height: 217px;
     `}
   }
+
+  .container {
+    gap: 32px;
+  }
 `
 
 // Definição do TituloContainer com o tipo isRestaurant

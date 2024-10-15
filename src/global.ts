@@ -18,7 +18,6 @@ export const GlobalCss = createGlobalStyle`
 
   body {
     background-color: ${cores.branca};
-    padding-top: 40px;
     overflow-x: hidden;
   }
 
