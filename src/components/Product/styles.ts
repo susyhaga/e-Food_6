@@ -14,7 +14,7 @@ export const Card = styled.div<{ isRestaurant?: boolean }>`
   box-sizing: border-box;
   width: ${({ isRestaurant }) => (isRestaurant ? '320px' : '472px')};
   margin-right: ${({ isRestaurant }) => (isRestaurant ? '32px' : '80px')};
-  margin-bottom: 32px;
+  margin-bottom: ${({ isRestaurant }) => (isRestaurant ? '32px' : '48px')};
   img {
     width: 100%;
     object-fit: cover;
