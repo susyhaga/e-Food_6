@@ -15,11 +15,11 @@ export const ModalWrapper = styled.div`
 `
 
 export const ModalContent = styled.div`
-  margin-right: 32px;
+  left: 25%;
   background: ${cores.rosa};
   color: ${cores.branca};
   width: 100%;
-  max-width: 1044px;
+  max-width: 1024px;
   height: 344px;
   position: relative;
   display: flex;
