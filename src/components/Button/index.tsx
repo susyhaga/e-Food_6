@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ButtonContainer, ButtonLink } from './styles'
 
 type Props = {
@@ -19,7 +20,7 @@ const Button = ({ type, title, onClick, to, children }: Props) => {
 
   return (
     <ButtonLink to={to as string} title={title} onClick={onClick}>
-      Saiba mais
+      <Link to="/menu">Saiba mais</Link>
     </ButtonLink>
   )
 }

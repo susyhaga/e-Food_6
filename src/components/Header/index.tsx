@@ -2,9 +2,19 @@ import { Link } from 'react-router-dom'
 import { HeaderBar, ImgHeader, LinkCard, RestImg } from './styles'
 import bannerImg from '../../assets/images/hero.png'
 import logo from '../../assets/images/logo.png'
-import italian from '../../assets/images/pastaMar.png'
 
-const Header = () => (
+// Definindo a interface para as props do Header
+interface HeaderProps {
+  restaurantTitle?: string
+  restaurantImage?: string
+  restaurantType?: string
+}
+
+const Header = ({
+  restaurantTitle,
+  restaurantImage,
+  restaurantType
+}: HeaderProps) => (
   <HeaderBar>
     <ImgHeader style={{ backgroundImage: `url(${bannerImg})` }}>
       <div className="container">
@@ -18,10 +28,10 @@ const Header = () => (
       </div>
     </ImgHeader>
     <RestImg>
-      <img src={italian} alt="" />
+      <img src={restaurantImage} alt={restaurantTitle} />
       <div className="textsDiv">
-        <p>Italiana</p>
-        <h4>La Dolce Vita Trattoria</h4>
+        <p>{restaurantType}</p>
+        <h4>{restaurantTitle}</h4>
       </div>
     </RestImg>
   </HeaderBar>

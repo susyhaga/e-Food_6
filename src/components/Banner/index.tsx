@@ -3,16 +3,16 @@ import { Img, Titulo } from './styles'
 import bannerImg from '../../assets/images/hero.png'
 import logo from '../../assets/images/logo.png'
 
-const Banner = () => {
+const Banner = ({ id }: { id: number }) => {
   return (
     <Img
       className="container"
       style={{
-        backgroundImage: `url(${bannerImg})`
+        backgroundImage: `url(${bannerImg})` // Define a imagem de fundo do banner
       }}
     >
       <div className="container">
-        <Link to="/restaurant">
+        <Link to={`/menu/${id}`}>
           <img src={logo} alt="logo e-food" />
         </Link>
         <div>

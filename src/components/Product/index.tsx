@@ -10,46 +10,86 @@ import {
 } from './styles'
 import Tag from '../Tag'
 import star from '../../assets/images/star.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 type Props = {
+  id: number
   title: string
   classification?: string[]
   description: string
   infos: string[]
   image: string
+  porcao?: string
+  preco?: number
   isRestaurant?: boolean
   isHome?: boolean
+  isFeatured?: boolean // Adiciona a nova prop
+  onClick?: () => void
 }
 
 const Product = ({
+  id,
   title,
   classification = [],
   description,
   infos,
   image,
   isRestaurant,
-  isHome
+  isHome,
+  isFeatured,
+  onClick
 }: Props) => {
   const navigate = useNavigate()
+  const location = useLocation() // Obter a localização atual
 
   const handleStyledLinkClick = () => {
-    navigate(isRestaurant ? '/' : '/restaurant')
+    navigate(isRestaurant ? '/' : `/menu/${id}`)
   }
 
+  const handleImageClick = () => {
+    if (isHome) {
+      navigate(`/menu/${id}`)
+    } else {
+      onClick?.()
+    }
+  }
+
+  const isDestaque = location.pathname === '/'
+  const isMenuRoute = location.pathname.startsWith('/menu/')
+
   return (
-    <Card isRestaurant={isRestaurant}>
-      {/* Mantendo o Link existente */}
-      <Link to="/restaurant" aria-label={`Ir para ${title}`}>
-        <img src={image} alt={`Imagem de ${title}`} />
-      </Link>
-
-      <Infos>
-        {!isRestaurant && infos.map((info) => <Tag key={info}>{info}</Tag>)}
+    <Card isRestaurant={isRestaurant || isMenuRoute}>
+      <img
+        src={image}
+        alt={`Imagem de ${title}`}
+        onClick={handleImageClick}
+        role="button"
+        aria-label={`Ver detalhes sobre ${title}`}
+        style={{ cursor: 'pointer' }}
+      />
+      <Infos isRestaurant={isRestaurant || isMenuRoute}>
+        {isHome &&
+          !isRestaurant &&
+          infos.map(
+            (
+              info // Renderiza tags apenas na rota principal
+            ) => <Tag key={info}>{info}</Tag>
+          )}
       </Infos>
-
-      <TituloContainer isRestaurant={isRestaurant}>
-        <Titulo isRestaurant={isRestaurant}>{title}</Titulo>
+      <TituloContainer isRestaurant={isRestaurant || isMenuRoute}>
+        <Titulo isRestaurant={!isRestaurant || isMenuRoute}>{title}</Titulo>
+        {isDestaque &&
+          isFeatured && ( // Verifica se é a home e se é um produto em destaque
+            <Infos>
+              <Tag size="big">Destaque da semana</Tag>
+              {isHome &&
+                infos.map(
+                  (
+                    info // Renderiza tags apenas na rota principal
+                  ) => <Tag key={info}>{info}</Tag>
+                )}
+            </Infos>
+          )}
         <ClassificationContainer>
           {!isRestaurant &&
             isHome &&
@@ -61,11 +101,15 @@ const Product = ({
             ))}
         </ClassificationContainer>
       </TituloContainer>
-
       <div className="descricao-container">
-        <Descricao isRestaurant={isRestaurant}>{description}</Descricao>
-        <Button onClick={handleStyledLinkClick} isRestaurant={isRestaurant}>
-          {isRestaurant ? 'Adicionar ao carrinho' : 'Saiba mais'}
+        <Descricao isRestaurant={isRestaurant || isMenuRoute}>
+          {description}
+        </Descricao>
+        <Button
+          onClick={handleStyledLinkClick}
+          isRestaurant={isRestaurant || isMenuRoute}
+        >
+          {isHome || isRestaurant ? 'Saiba mais' : 'Adicionar ao carrinho'}
         </Button>
       </div>
     </Card>

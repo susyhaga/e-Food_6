@@ -8,8 +8,6 @@ import twitter from '../../assets/images/twitter.svg'
 const Footer = () => (
   <Container>
     <div className="container">
-      {' '}
-      {/* A classe container deve ser aplicada aqui */}
       <FooterSection>
         <Link to="/">
           <img src={logo} alt="logo e-food" />

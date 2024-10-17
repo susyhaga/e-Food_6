@@ -1,28 +1,38 @@
+import React from 'react'
 import { useLocation } from 'react-router-dom'
-import Card from '../../models/CardModel'
 import Product from '../Product'
 import { Container, List } from './styles'
+
+export interface ProductCard {
+  id: number
+  title: string
+  classification?: string[]
+  description: string
+  image: string
+  porcao?: string
+  infos: string[]
+  preco?: number
+}
 
 export type Props = {
   title: string
   background: 'rosa' | 'rosaclaro' | 'branca'
-  card: Card[]
+  card?: ProductCard[]
   columns: number
   isRestaurant?: boolean
+  onProductClick?: (product: ProductCard) => void
 }
 
 const ProductsList = ({
   title,
   background,
-  card,
+  card = [],
   columns,
-  isRestaurant = false
+  isRestaurant = false,
+  onProductClick
 }: Props) => {
-  const location = useLocation() // hook para obter a localização
-
-  const isCurrentRestaurant =
-    isRestaurant || location.pathname === '/restaurant'
-
+  const location = useLocation()
+  const isCurrentRestaurant = isRestaurant || location.pathname === '/menu'
   const isHome = location.pathname === '/'
 
   return (
@@ -30,16 +40,21 @@ const ProductsList = ({
       <div className="container">
         <h2>{title}</h2>
         <List columns={columns} isRestaurant={isCurrentRestaurant}>
-          {card.map((game) => (
+          {card.map((product, index) => (
             <Product
-              key={game.id}
-              classification={game.classification ?? []}
-              description={game.description}
-              infos={game.infos}
-              image={game.image}
-              title={game.title}
+              key={product.id}
+              classification={product.classification ?? []}
+              description={product.description}
+              infos={product.infos}
+              image={product.image}
+              title={product.title}
+              preco={product.preco}
+              porcao={product.porcao}
               isRestaurant={isCurrentRestaurant}
-              isHome={isHome} // Passando a prop isHome
+              isHome={isHome}
+              onClick={() => onProductClick?.(product)}
+              id={product.id}
+              isFeatured={isHome && index === 0}
             />
           ))}
         </List>

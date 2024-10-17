@@ -1,91 +1,77 @@
-import ProductsList from '../../components/ProductsList'
-import Game from '../../models/CardModel'
-
-// import pizza from '../../assets/images/pizza.png'
-import pasta from '../../assets/images/pastaMar.png'
-import sushi from '../../assets/images/sushi.png'
-// import zelda from '../../assets/images/pastaMar.png'
+import { useCallback, useEffect, useState } from 'react'
 import Banner from '../../components/Banner'
+import ProductsList, {
+  ProductCard as ProductListCard
+} from '../../components/ProductsList'
+import { useNavigate } from 'react-router-dom'
 
-//Game = models usado no ProductsList
-const cardsIntro: Game[] = [
-  {
-    id: 1,
-    title: 'Hioki Sushi',
-    classification: ['4.9'],
-    system: 'Windows',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    infos: ['Destaque da semana', 'Japonesa'],
-    image: sushi,
-    star: ''
-  },
-  {
-    id: 2,
-    title: 'La Dolce Vita Trattoria',
-    classification: ['4.8'],
-    system: '',
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    infos: ['Italiana'],
-    image: pasta,
-    star: ''
-  },
-  {
-    id: 3,
-    title: 'La Dolce Vita Trattoria',
-    classification: ['4.8'],
-    system: '',
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    infos: ['Italiana'],
-    image: pasta,
-    star: ''
-  },
-  {
-    id: 4,
-    title: 'La Dolce Vita Trattoria',
-    classification: ['4.8'],
-    system: '',
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    infos: ['Italiana'],
-    image: pasta,
-    star: ''
-  },
-  {
-    id: 5,
-    title: 'La Dolce Vita Trattoria',
-    classification: ['4.8'],
-    system: '',
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    infos: ['Italiana'],
-    image: pasta,
-    star: ''
-  },
-  {
-    id: 6,
-    title: 'La Dolce Vita Trattoria',
-    classification: ['4.8'],
-    system: '',
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    infos: ['Italiana'],
-    image: pasta,
-    star: ''
-  }
-]
+interface Restaurant {
+  id: number
+  titulo: string
+  avaliacao: number
+  descricao: string
+  tipo: string
+  capa: string
+}
 
-const Home = () => (
-  <>
-    <Banner />
-    <ProductsList
-      card={cardsIntro}
-      background="branca"
-      columns={2}
-      title={''}
-    />
-  </>
-)
+const Home = () => {
+  const [restaurantCards, setRestaurantCards] = useState<ProductListCard[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
+  const navigate = useNavigate()
+
+  const handleProductClick = useCallback(
+    (product: ProductListCard) => {
+      navigate(`/menu/${product.id}`) // Navega para a rota do menu do restaurante com o id correspondente
+    },
+    [navigate]
+  )
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const res = await fetch(
+          'https://fake-api-tau.vercel.app/api/efood/restaurantes'
+        )
+        if (!res.ok) {
+          throw new Error('Erro ao buscar restaurantes')
+        }
+        const data: Restaurant[] = await res.json()
+
+        const mappedData = data.map((restaurant) => ({
+          id: restaurant.id,
+          title: restaurant.titulo,
+          classification: [restaurant.avaliacao.toString()],
+          description: restaurant.descricao,
+          infos: [restaurant.tipo],
+          image: restaurant.capa
+        }))
+        setRestaurantCards(mappedData)
+      } catch (err) {
+        setError('Não foi possível carregar os restaurantes')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchRestaurants()
+  }, [])
+
+  if (loading) return <div>Carregando...</div>
+  if (error) return <div>{error}</div>
+
+  return (
+    <>
+      {restaurantCards.length > 0 && <Banner id={restaurantCards[0].id} />}
+      <ProductsList
+        card={restaurantCards}
+        background="branca"
+        columns={2}
+        title="Restaurantes"
+        onProductClick={handleProductClick} // Passa a função de clique aqui
+      />
+    </>
+  )
+}
+
 export default Home

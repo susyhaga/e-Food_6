@@ -1,9 +1,10 @@
+// styles.ts
 import styled from 'styled-components'
 import { cores } from '../../global'
 
 // Definição do Card com o tipo isRestaurant
 export const Card = styled.div<{ isRestaurant?: boolean }>`
-  width: 100vw;
+  width: ${({ isRestaurant }) => (isRestaurant ? '320px' : '472px')};
   border: ${({ isRestaurant }) =>
     isRestaurant ? '8px solid ' + cores.rosa : '1px solid ' + cores.rosa};
   position: relative;
@@ -12,66 +13,37 @@ export const Card = styled.div<{ isRestaurant?: boolean }>`
   background-color: ${({ isRestaurant }) =>
     isRestaurant ? cores.rosa : cores.branca};
   box-sizing: border-box;
-  width: ${({ isRestaurant }) => (isRestaurant ? '320px' : '472px')};
   margin-right: ${({ isRestaurant }) => (isRestaurant ? '32px' : '80px')};
   margin-bottom: ${({ isRestaurant }) => (isRestaurant ? '32px' : '48px')};
+
   img {
     width: 100%;
     object-fit: cover;
-    ${({ isRestaurant }) =>
-      isRestaurant &&
-      `
-      height: 168px;
-    `}
-    ${({ isRestaurant }) =>
-      !isRestaurant &&
-      `
-      height: 217px;
-    `}
-  }
-
-  .container {
+    height: ${({ isRestaurant }) => (isRestaurant ? '168px' : '217px')};
   }
 `
 
-// Definição do TituloContainer com o tipo isRestaurant
 export const TituloContainer = styled.div<{ isRestaurant?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 1px;
+  margin-left: 8px;
   margin-right: 8px;
-  color: ${cores.branca};
-
-  ${({ isRestaurant }) =>
-    !isRestaurant &&
-    `
-    color: ${cores.rosa};
-    margin-left: 8px;
-  `}
+  color: ${({ isRestaurant }) => (isRestaurant ? cores.branca : cores.rosa)};
 `
 
 export const Titulo = styled.h3<{ isRestaurant?: boolean }>`
   font-weight: bold;
   font-size: 16px;
-  display: block;
   margin-bottom: 16px;
   margin-top: 8px;
-  color: ${cores.branca};
-
-  ${({ isRestaurant }) =>
-    !isRestaurant &&
-    `
-    color:  ${cores.rosa};
-    margin-bottom: 16px;
-  `}
+  color: ${({ isRestaurant }) => (isRestaurant ? cores.branca : cores.rosa)};
 `
 
 export const ClassificationContainer = styled.div`
   display: flex;
   align-items: end;
   font-weight: bold;
-
   div {
     display: flex;
     align-items: center;
@@ -82,42 +54,25 @@ export const ClassificationContainer = styled.div`
 export const Descricao = styled.p<{ isRestaurant?: boolean }>`
   font-size: 14px;
   line-height: 22px;
-  display: flex;
-  width: 456px;
-  height: 88px;
-  margin-left: 1px;
+  margin-left: 8px;
   margin-right: 8px;
-  text-align: start;
-
-  ${({ isRestaurant }) =>
-    isRestaurant &&
-    `
-    text-align: start;
-    width: 304px;
-    height: 88px;
-    color: ${cores.branca};
-  `}
-
-  ${({ isRestaurant }) =>
-    !isRestaurant &&
-    `
-    margin-left: 8px;
-    width: 456px;
-    height:auto;
-    color: ${cores.rosa};
-  `}
+  text-align: ${({ isRestaurant }) => (isRestaurant ? 'start' : 'start')};
+  width: ${({ isRestaurant }) => (isRestaurant ? '304px' : '456px')};
+  height: ${({ isRestaurant }) => (isRestaurant ? '88px' : 'auto')};
+  color: ${({ isRestaurant }) => (isRestaurant ? cores.branca : cores.rosa)};
 `
 
 export const Infos = styled.div<{ isRestaurant?: boolean }>`
   position: absolute;
   top: 16px;
   right: 16px;
+  padding: 8px;
 
   ${({ isRestaurant }) =>
     isRestaurant &&
     `
-    border-radius: 4px; /* Bordas arredondadas */
-    padding: 8px; /* Padding */
+      border-radius: 4px;
+      padding: 8px;
   `}
 `
 
@@ -129,7 +84,7 @@ export const Star = styled.div<{ isRestaurant?: boolean }>`
   ${({ isRestaurant }) =>
     isRestaurant &&
     `
-    display: none; /* Esconde estrelas se for restaurante */
+      display: none; /* Esconde estrelas se for restaurante */
   `}
 
   img {
@@ -139,10 +94,11 @@ export const Star = styled.div<{ isRestaurant?: boolean }>`
     ${({ isRestaurant }) =>
       isRestaurant &&
       `
-      filter: brightness(0) invert(1); /* Inverter cores para melhor visibilidade */
+        filter: brightness(0) invert(1);
     `}
   }
 `
+
 export const Button = styled.button<{ isRestaurant?: boolean }>`
   border: none;
   font-weight: bold;
@@ -154,26 +110,14 @@ export const Button = styled.button<{ isRestaurant?: boolean }>`
   margin-bottom: 8px;
   margin-left: 8px;
 
-  /* Cor e fundo padrão */
   color: ${({ isRestaurant }) => (isRestaurant ? cores.rosa : cores.branca)};
   background-color: ${({ isRestaurant }) =>
     isRestaurant ? cores.branca : cores.rosa};
 
-  /* Estilo específico para o botão na rota restaurant */
-  ${({ isRestaurant }) =>
-    isRestaurant &&
-    `
-    color: ${cores.rosa}; /* Cor do texto para "Adicionar ao Carrinho" */
-    background-color: ${cores.branca}; /* Fundo para "Adicionar ao Carrinho" */
-    height: 24px; /* Ajuste a altura aqui */
-    padding: 4px; /* Ajuste o padding se necessário */
-    margin-bottom: 8px;
-  `}
-
+  height: ${({ isRestaurant }) => (isRestaurant ? '24px' : 'auto')};
   width: ${({ isRestaurant }) => (isRestaurant ? '100%' : 'auto')};
   text-align: center;
 
-  /* Estilos adicionais quando isRestaurant é verdadeiro */
   ${({ isRestaurant }) =>
     isRestaurant &&
     `
