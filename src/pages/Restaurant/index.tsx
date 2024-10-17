@@ -94,7 +94,7 @@ const Restaurant = () => {
     }
   }
 
-  if (loading) return <div>Carregando...</div>
+  if (loading) return <div></div>
   if (error) return <div>{error}</div>
 
   const productCards: ProductCard[] =
