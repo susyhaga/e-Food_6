@@ -85,7 +85,7 @@ export const Star = styled.div<{ isRestaurant?: boolean }>`
   ${({ isRestaurant }) =>
     isRestaurant &&
     `
-      display: none; /* Esconde estrelas se for restaurante */
+      display: none;
   `}
 
   img {
