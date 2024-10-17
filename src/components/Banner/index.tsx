@@ -8,7 +8,7 @@ const Banner = ({ id }: { id: number }) => {
     <Img
       className="container"
       style={{
-        backgroundImage: `url(${bannerImg})` // Define a imagem de fundo do banner
+        backgroundImage: `url(${bannerImg})`
       }}
     >
       <div className="container">

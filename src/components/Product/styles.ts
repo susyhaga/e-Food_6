@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { cores } from '../../global'
 
 // Definição do Card com o tipo isRestaurant
-export const Card = styled.div<{ isRestaurant?: boolean }>`
+export const Card = styled.li<{ isRestaurant?: boolean }>`
   width: ${({ isRestaurant }) => (isRestaurant ? '320px' : '472px')};
   border: ${({ isRestaurant }) =>
     isRestaurant ? '8px solid ' + cores.rosa : '1px solid ' + cores.rosa};
@@ -12,9 +12,10 @@ export const Card = styled.div<{ isRestaurant?: boolean }>`
   flex-direction: column;
   background-color: ${({ isRestaurant }) =>
     isRestaurant ? cores.rosa : cores.branca};
-  box-sizing: border-box;
   margin-right: ${({ isRestaurant }) => (isRestaurant ? '32px' : '80px')};
   margin-bottom: ${({ isRestaurant }) => (isRestaurant ? '32px' : '48px')};
+
+  box-sizing: border-box;
 
   img {
     width: 100%;

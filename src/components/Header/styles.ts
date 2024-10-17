@@ -13,7 +13,7 @@ export const HeaderBar = styled.header`
 `
 export const ImgHeader = styled.div`
   height: 186px;
-  width: 100vw;
+  width: 100%;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,8 +26,10 @@ export const ImgHeader = styled.div`
     display: flex;
     align-items: center;
     margin: 0 auto;
-    width: calc(100% - 40px);
-    gap: 290px;
+    max-width: 1024px;
+    width: 100%;
+    gap: 341px;
+    padding: 0 20px;
   }
 `
 
@@ -60,7 +62,7 @@ export const RestImg = styled.div`
   }
 
   img {
-    width: 100%; /* Ajuste para garantir que a imagem ocupe toda a largura */
+    width: 100%;
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -69,17 +71,16 @@ export const RestImg = styled.div`
   }
 
   .textsDiv {
+    max-width: 1024px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
-    width: 100%;
     justify-content: start;
-    margin-left: 800px;
     position: absolute;
     z-index: 6;
     color: ${cores.branca};
-    gap: 156.5px; /* Espaçamento entre os elementos */
+    gap: 156.5px;
     font-size: 32px;
   }
 

@@ -22,7 +22,7 @@ export const GlobalCss = createGlobalStyle`
   }
 
   .container{
-    max-width: 1024px;
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
     color: ${cores.branca}

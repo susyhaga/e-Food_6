@@ -16,9 +16,8 @@ export const Container = styled.section<ContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   margin: 80px auto;
-  margin-bottom: 56px;
+  max-width: 1024px;
 `
 
 export const List = styled.ul<ListProps>`
@@ -26,4 +25,13 @@ export const List = styled.ul<ListProps>`
   grid-template-columns: repeat(${(props) => props.columns}, 1fr);
   justify-content: center;
   align-items: center;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `
