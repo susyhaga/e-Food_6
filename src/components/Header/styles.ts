@@ -11,6 +11,7 @@ export const HeaderBar = styled.header`
     font-weight: bold;
   }
 `
+
 export const ImgHeader = styled.div`
   height: 186px;
   width: 100%;
@@ -28,18 +29,19 @@ export const ImgHeader = styled.div`
     margin: 0 auto;
     max-width: 1024px;
     width: 100%;
-    gap: 341px;
     padding: 0 20px;
+    white-space: nowrap;
+    gap: 268px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 `
 
-export const LinkCard = styled.a`
-  width: 100%;
-  white-space: nowrap;
-`
-
 export const RestImg = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 280px;
   position: relative;
   overflow: hidden;
@@ -47,7 +49,7 @@ export const RestImg = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto; /* Centralizar horizontalmente */
+  margin: 0 auto;
   padding: 0;
 
   &::before {
@@ -82,6 +84,11 @@ export const RestImg = styled.div`
     color: ${cores.branca};
     gap: 156.5px;
     font-size: 32px;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      gap: 1rem;
+    }
   }
 
   p {

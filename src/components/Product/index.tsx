@@ -23,7 +23,7 @@ type Props = {
   preco?: number
   isRestaurant?: boolean
   isHome?: boolean
-  isFeatured?: boolean // Adiciona a nova prop
+  isFeatured?: boolean
   onClick?: () => void
 }
 
@@ -40,7 +40,7 @@ const Product = ({
   onClick
 }: Props) => {
   const navigate = useNavigate()
-  const location = useLocation() // Obter a localização atual
+  const location = useLocation()
 
   const handleStyledLinkClick = () => {
     navigate(isRestaurant ? '/' : `/menu/${id}`)
@@ -70,26 +70,17 @@ const Product = ({
       <Infos isRestaurant={isRestaurant || isMenuRoute}>
         {isHome &&
           !isRestaurant &&
-          infos.map(
-            (
-              info // Renderiza tags apenas na rota principal
-            ) => <Tag key={info}>{info}</Tag>
-          )}
+          infos.map((info) => <Tag key={info}>{info}</Tag>)}
       </Infos>
       <TituloContainer isRestaurant={isRestaurant || isMenuRoute}>
-        <Titulo isRestaurant={!isRestaurant || isMenuRoute}>{title}</Titulo>
-        {isDestaque &&
-          isFeatured && ( // Verifica se é a home e se é um produto em destaque
-            <Infos>
-              <Tag size="big">Destaque da semana</Tag>
-              {isHome &&
-                infos.map(
-                  (
-                    info // Renderiza tags apenas na rota principal
-                  ) => <Tag key={info}>{info}</Tag>
-                )}
-            </Infos>
-          )}
+        <Titulo isRestaurant={!isRestaurant || isMenuRoute}>{title}</Titulo>{' '}
+        {/* Título renderizado */}
+        {isDestaque && isFeatured && (
+          <Infos>
+            <Tag size="big">Destaque da semana</Tag>
+            {isHome && infos.map((info) => <Tag key={info}>{info}</Tag>)}
+          </Infos>
+        )}
         <ClassificationContainer>
           {!isRestaurant &&
             isHome &&

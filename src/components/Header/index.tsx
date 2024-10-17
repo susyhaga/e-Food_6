@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { HeaderBar, ImgHeader, LinkCard, RestImg } from './styles'
+import { HeaderBar, ImgHeader, RestImg } from './styles'
 import bannerImg from '../../assets/images/hero.png'
 import logo from '../../assets/images/logo.png'
 
@@ -24,7 +24,7 @@ const Header = ({
         <Link to="/">
           <img src={logo} alt="logo e-food" />
         </Link>
-        <LinkCard href="#">0 - produto(o) no carrinho</LinkCard>
+        <a href="#">0 - produto(o) no carrinho</a>
       </div>
     </ImgHeader>
     <RestImg>

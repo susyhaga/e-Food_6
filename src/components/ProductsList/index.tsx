@@ -38,7 +38,7 @@ const ProductsList = ({
   return (
     <Container background={background} isRestaurant={isCurrentRestaurant}>
       <div className="container">
-        <h2>{title}</h2>
+        <h2>{title}</h2> {/* Título sendo exibido */}
         <List columns={columns} isRestaurant={isCurrentRestaurant}>
           {card.map((product, index) => (
             <Product
@@ -47,7 +47,7 @@ const ProductsList = ({
               description={product.description}
               infos={product.infos}
               image={product.image}
-              title={product.title}
+              title={product.title} // Passando o título corretamente
               preco={product.preco}
               porcao={product.porcao}
               isRestaurant={isCurrentRestaurant}

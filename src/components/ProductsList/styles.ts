@@ -14,6 +14,7 @@ type ContainerProps = {
 
 export const Container = styled.section<ContainerProps>`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 80px auto;
@@ -23,9 +24,12 @@ export const Container = styled.section<ContainerProps>`
 export const List = styled.ul<ListProps>`
   display: grid;
   grid-template-columns: repeat(${(props) => props.columns}, 1fr);
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
