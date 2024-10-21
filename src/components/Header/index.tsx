@@ -10,6 +10,10 @@ interface HeaderProps {
   restaurantType?: string
 }
 
+function capitalizeFirstLetter(text: string): string {
+  if (!text) return ''
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
+}
 const Header = ({
   restaurantTitle,
   restaurantImage,
@@ -30,7 +34,7 @@ const Header = ({
     <RestImg>
       <img src={restaurantImage} alt={restaurantTitle} />
       <div className="textsDiv">
-        <p>{restaurantType}</p>
+        <p>{capitalizeFirstLetter(restaurantType || '')}</p>
         <h4>{restaurantTitle}</h4>
       </div>
     </RestImg>

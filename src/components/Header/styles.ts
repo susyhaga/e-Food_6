@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { cores } from '../../global'
 
 export const HeaderBar = styled.header`
+  margin: 0 auto;
   width: 100%;
   color: ${cores.branca};
 
@@ -26,16 +27,16 @@ export const ImgHeader = styled.div`
   .container {
     display: flex;
     align-items: center;
+    justify-content: center; /* Alinhamento centralizado */
     margin: 0 auto;
     max-width: 1024px;
     width: 100%;
-    padding: 0 20px;
     white-space: nowrap;
-    gap: 268px;
+    gap: 19rem;
+    padding-left: 6px;
 
     @media (max-width: 768px) {
       flex-direction: column;
-      gap: 1rem;
     }
   }
 `
@@ -50,7 +51,6 @@ export const RestImg = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  padding: 0;
 
   &::before {
     content: '';
@@ -78,22 +78,21 @@ export const RestImg = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: start;
     position: absolute;
     z-index: 6;
     color: ${cores.branca};
-    gap: 156.5px;
     font-size: 32px;
+    padding-left: 6px;
 
     @media (max-width: 768px) {
       font-size: 24px;
-      gap: 1rem;
     }
   }
 
   p {
     font-weight: 100;
     margin-top: 25px;
+    margin-bottom: 156.5px;
   }
 
   h4 {
