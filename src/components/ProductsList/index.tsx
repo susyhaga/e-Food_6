@@ -38,7 +38,7 @@ const ProductsList = ({
   return (
     <Container background={background} isRestaurant={isCurrentRestaurant}>
       <div className="container">
-        <h2>{title}</h2> {/* Título sendo exibido */}
+        <h2>{title}</h2>
         <List columns={columns} isRestaurant={isCurrentRestaurant}>
           {card.map((product, index) => (
             <Product

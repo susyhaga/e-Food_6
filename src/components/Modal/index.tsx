@@ -1,3 +1,4 @@
+// No seu arquivo Modal.tsx
 import {
   ModalWrapper,
   ModalContent,
@@ -9,6 +10,7 @@ import {
   TextContainer
 } from './styles'
 import close from '../../assets/images/close.png'
+
 interface ModalProps {
   onClose: () => void
   title: string

@@ -35,6 +35,14 @@ export const ImgHeader = styled.div`
     gap: 19rem;
     padding-left: 6px;
 
+    button {
+      border: none;
+      font-size: 18px;
+      color: ${cores.rosa};
+      background-color: transparent;
+      font-weight: bold;
+      cursor: pointer;
+    }
     @media (max-width: 768px) {
       flex-direction: column;
     }
@@ -79,7 +87,7 @@ export const RestImg = styled.div`
     flex-direction: column;
     align-items: start;
     position: absolute;
-    z-index: 6;
+    z-index: 1;
     color: ${cores.branca};
     font-size: 32px;
     padding-left: 6px;

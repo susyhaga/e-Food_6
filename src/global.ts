@@ -1,9 +1,16 @@
 import { createGlobalStyle } from 'styled-components'
 
+//breakpoints responsividade
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
+}
+
 export const cores = {
   rosa: '#E66767',
   rosaclaro: '#FFEBD9',
   amarela: '#FFB930',
+  overlay: 'rgba(0, 0, 0, 0.8)',
   branca: 'rgba(255, 255, 255, 1)'
 }
 
@@ -22,9 +29,11 @@ export const GlobalCss = createGlobalStyle`
   }
 
   .container{
-    max-width: 100%;
+    max-width: 1024px;
     width: 100%;
     margin: 0 auto;
-    color: ${cores.branca}
+    color: ${cores.branca};
+
+
   }
 `
