@@ -19,8 +19,6 @@ const Restaurant = () => {
   )
 
   const dispatch = useDispatch()
-  dispatch(open()) // para abrir o carrinho
-
   const selectedProduct = useSelector(selectSelectedProduct)
 
   const truncateDescription = (description: string, maxLength: number) => {
@@ -39,7 +37,6 @@ const Restaurant = () => {
   }
 
   const closeProductModal = () => {
-    // Renomeie para evitar conflitos
     dispatch(setSelectedProduct(null))
     dispatch(closeModal())
   }
@@ -53,7 +50,8 @@ const Restaurant = () => {
         price: selectedProduct.preco || 0
       }
       dispatch(addItem(productToAdd))
-      closeProductModal()
+      dispatch(open())
+      closeProductModal() // Fecha o modal após adicionar o item ao carrinho
     }
   }
 
@@ -91,6 +89,7 @@ const Restaurant = () => {
           title={selectedProduct.nome}
           image={selectedProduct.foto}
           onAddToCart={handleAddToCart}
+          onOpenCart={() => dispatch(open())} // Abre o carrinho
           description={selectedProduct.descricao}
           porcao={selectedProduct.porcao}
           preco={selectedProduct.preco || 0}

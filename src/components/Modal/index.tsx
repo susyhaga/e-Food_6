@@ -22,6 +22,7 @@ interface ModalProps {
   porcao?: string
   onClose: () => void
   onAddToCart: () => void
+  onOpenCart: () => void
 }
 const Modal = ({
   title,
@@ -30,11 +31,17 @@ const Modal = ({
   preco,
   porcao,
   onClose,
-  onAddToCart // Adicione aqui
+  onAddToCart,
+  onOpenCart
 }: ModalProps) => {
   const isModalOpen = useSelector((state: RootState) => state.modal.isModalOpen)
 
   if (!isModalOpen) return null
+
+  const handleAddToCartAndOpen = () => {
+    onAddToCart()
+    onOpenCart()
+  }
 
   return (
     <ModalWrapper onClick={onClose}>
@@ -47,7 +54,7 @@ const Modal = ({
           <Title>{title}</Title>
           <Description>{description}</Description>
           {porcao && <p>{`Porção: ${porcao}`}</p>}
-          <Button onClick={onAddToCart}>
+          <Button onClick={handleAddToCartAndOpen}>
             Adicionar ao carrinho - R$ {preco.toFixed(2)}
           </Button>
         </TextContainer>
