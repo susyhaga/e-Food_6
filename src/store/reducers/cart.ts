@@ -31,12 +31,11 @@ const cartSlice = createSlice({
       state.items.push(action.payload)
     },
     removeItem(state, action: PayloadAction<CartItem>) {
-      // Remove a primeira instância que corresponde ao item que o usuário deseja remover
       const index = state.items.findIndex(
         (item) =>
           item.id === action.payload.id &&
           item.name === action.payload.name &&
-          item.price === action.payload.price // Compare todos os atributos necessários
+          item.price === action.payload.price
       )
 
       if (index !== -1) {

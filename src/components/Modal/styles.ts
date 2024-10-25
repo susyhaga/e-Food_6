@@ -15,7 +15,6 @@ export const ModalWrapper = styled.div`
 `
 
 export const ModalContent = styled.div`
-  left: 20%;
   background: ${cores.rosa};
   color: ${cores.branca};
   width: 100%;

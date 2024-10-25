@@ -38,7 +38,6 @@ export const Titulo = styled.h3<{ isRestaurant?: boolean }>`
   font-size: 16px;
   margin-bottom: 16px;
   margin-top: 8px;
-  color: ${({ isRestaurant }) => (isRestaurant ? cores.branca : cores.rosa)};
 `
 
 export const ClassificationContainer = styled.div`
@@ -57,6 +56,9 @@ export const Descricao = styled.p<{ isRestaurant?: boolean }>`
   line-height: 22px;
   margin-left: 8px;
   margin-right: 8px;
+  padding-right: 8px;
+  display: flex;
+  justify-content: flex-start;
   text-align: ${({ isRestaurant }) => (isRestaurant ? 'start' : 'start')};
   width: ${({ isRestaurant }) => (isRestaurant ? '304px' : '456px')};
   height: ${({ isRestaurant }) => (isRestaurant ? '88px' : 'auto')};

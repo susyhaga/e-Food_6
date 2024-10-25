@@ -1,4 +1,8 @@
-// No seu arquivo Modal.tsx
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootReducer as RootState } from '../../store'
+import close from '../../assets/images/close.png'
+
 import {
   ModalWrapper,
   ModalContent,
@@ -9,46 +13,45 @@ import {
   ButtonClose,
   TextContainer
 } from './styles'
-import close from '../../assets/images/close.png'
 
 interface ModalProps {
-  onClose: () => void
   title: string
   description: string
   image: string
-  onAddToCart: () => void
   preco: number
   porcao?: string
-  children?: JSX.Element
+  onClose: () => void
+  onAddToCart: () => void
 }
-
 const Modal = ({
-  onClose,
   title,
   description,
   image,
-  onAddToCart,
   preco,
-  porcao
+  porcao,
+  onClose,
+  onAddToCart // Adicione aqui
 }: ModalProps) => {
+  const isModalOpen = useSelector((state: RootState) => state.modal.isModalOpen)
+
+  if (!isModalOpen) return null
+
   return (
     <ModalWrapper onClick={onClose}>
-      <div className="container">
-        <ModalContent onClick={(e) => e.stopPropagation()}>
-          <ButtonClose onClick={onClose}>
-            <img src={close} alt="" />
-          </ButtonClose>
-          <Image src={image} alt={`Imagem de ${title}`} />
-          <TextContainer>
-            <Title>{title}</Title>
-            <Description>{description}</Description>
-            {porcao && <p>{`Porção: ${porcao}`}</p>}
-            <Button onClick={onAddToCart}>
-              Adicionar ao carrinho - R$ {preco.toFixed(2)}
-            </Button>
-          </TextContainer>
-        </ModalContent>
-      </div>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
+        <ButtonClose onClick={onClose}>
+          <img src={close} alt="Fechar modal" />
+        </ButtonClose>
+        <Image src={image} alt={`Imagem de ${title}`} />
+        <TextContainer>
+          <Title>{title}</Title>
+          <Description>{description}</Description>
+          {porcao && <p>{`Porção: ${porcao}`}</p>}
+          <Button onClick={onAddToCart}>
+            Adicionar ao carrinho - R$ {preco.toFixed(2)}
+          </Button>
+        </TextContainer>
+      </ModalContent>
     </ModalWrapper>
   )
 }

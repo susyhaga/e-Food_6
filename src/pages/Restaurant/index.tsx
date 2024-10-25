@@ -1,3 +1,4 @@
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import Header from '../../components/Header'
 import Modal from '../../components/Modal'
@@ -9,6 +10,7 @@ import {
   selectSelectedProduct
 } from '../../store/reducers/menu'
 import { addItem, open } from '../../store/reducers/cart'
+import { openModal, closeModal } from '../../store/reducers/modal'
 
 const Restaurant = () => {
   const { id } = useParams<{ id: string }>()
@@ -17,6 +19,8 @@ const Restaurant = () => {
   )
 
   const dispatch = useDispatch()
+  dispatch(open()) // para abrir o carrinho
+
   const selectedProduct = useSelector(selectSelectedProduct)
 
   const truncateDescription = (description: string, maxLength: number) => {
@@ -24,17 +28,20 @@ const Restaurant = () => {
     return `${description.substring(0, maxLength)}...`
   }
 
-  const openModal = (product: ProductCard) => {
+  const openProductModal = (product: ProductCard) => {
     const menuItem = restaurantDetails?.cardapio.find(
       (item) => item.id === product.id
     )
     if (menuItem) {
       dispatch(setSelectedProduct(menuItem))
+      dispatch(openModal())
     }
   }
 
-  const closeModal = () => {
+  const closeProductModal = () => {
+    // Renomeie para evitar conflitos
     dispatch(setSelectedProduct(null))
+    dispatch(closeModal())
   }
 
   const handleAddToCart = () => {
@@ -46,8 +53,7 @@ const Restaurant = () => {
         price: selectedProduct.preco || 0
       }
       dispatch(addItem(productToAdd))
-      closeModal()
-      dispatch(open())
+      closeProductModal()
     }
   }
 
@@ -76,12 +82,12 @@ const Restaurant = () => {
         title=""
         background="rosa"
         columns={3}
-        onProductClick={openModal}
+        onProductClick={openProductModal}
         card={productCards}
       />
       {selectedProduct && (
         <Modal
-          onClose={closeModal}
+          onClose={closeProductModal}
           title={selectedProduct.nome}
           image={selectedProduct.foto}
           onAddToCart={handleAddToCart}

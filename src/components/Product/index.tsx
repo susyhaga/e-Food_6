@@ -46,7 +46,7 @@ const Product = ({
 }: Props) => {
   const navigate = useNavigate()
   const location = useLocation()
-  const dispatch = useDispatch() // Usando useDispatch
+  const dispatch = useDispatch()
 
   const handleStyledLinkClick = () => {
     navigate(isRestaurant ? '/' : `/menu/${id}`)
@@ -80,7 +80,9 @@ const Product = ({
       <img
         src={image}
         alt={`Imagem de ${title}`}
-        onClick={handleImageClick}
+        onClick={
+          !isHome || isRestaurant ? handleAddToCart : handleStyledLinkClick
+        }
         role="button"
         aria-label={`Ver detalhes sobre ${title}`}
         style={{ cursor: 'pointer' }}
@@ -116,8 +118,8 @@ const Product = ({
         </Descricao>
         <Button
           onClick={
-            isHome || isRestaurant ? handleStyledLinkClick : handleAddToCart
-          } // Adiciona ao carrinho se não for a página inicial ou de restaurante
+            isHome || isRestaurant ? handleStyledLinkClick : handleImageClick
+          }
           isRestaurant={isRestaurant || isMenuRoute}
         >
           {isHome || isRestaurant ? 'Saiba mais' : 'Adicionar ao carrinho'}
