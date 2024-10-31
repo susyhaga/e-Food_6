@@ -1,6 +1,35 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Restaurant } from '../pages/Home'
 
+// Define o tipo para o payload do checkout
+type CheckoutPayload = {
+  products: {
+    id: number
+    price: number
+  }[]
+  delivery: {
+    receiver: string
+    address: {
+      description: string
+      city: string
+      zipCode: string
+      number: number
+      complement?: string
+    }
+  }
+  payment: {
+    card: {
+      name: string
+      number: string
+      code: number
+      expires: {
+        month: number
+        year: number
+      }
+    }
+  }
+}
+
 const api = createApi({
   reducerPath: 'restaurantApi',
   baseQuery: fetchBaseQuery({
@@ -15,6 +44,14 @@ const api = createApi({
     }),
     getRestaurantById: builder.query<Restaurant, string>({
       query: (id) => `${id}` // Endpoint que retorna detalhes de um restaurante específico com base no ID
+    }),
+    // Endpoint para confirmar o checkout (uso de POST = mutation)
+    checkout: builder.mutation<any, CheckoutPayload>({
+      query: (body) => ({
+        url: 'checkout',
+        method: 'POST',
+        body
+      })
     })
   })
 })
@@ -23,7 +60,8 @@ const api = createApi({
 export const {
   useGetRestaurantsQuery,
   useGetFeaturedRestaurantsQuery,
-  useGetRestaurantByIdQuery
+  useGetRestaurantByIdQuery,
+  useCheckoutMutation // Hook para a mutação de checkout
 } = api
 
 export default api

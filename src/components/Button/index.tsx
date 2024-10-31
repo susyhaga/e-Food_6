@@ -1,27 +1,47 @@
-import { Link } from 'react-router-dom'
 import { ButtonContainer, ButtonLink } from './styles'
 
 type Props = {
   type: 'button' | 'link'
   title: string
   to?: string
-  onClick?: () => void //recebe uma funcao sem argumento
-  children: string //texto do botao
+  onClick?: () => void // recebe uma função sem argumento
+  children: string
+  bgColor?: string
+  disabled?: boolean // Adicione esta linha
 }
 
-const Button = ({ type, title, onClick, to, children }: Props) => {
+const Button = ({
+  type,
+  title,
+  onClick,
+  to,
+  children,
+  bgColor,
+  disabled
+}: Props) => {
   if (type === 'button') {
     return (
-      <ButtonContainer type="button" title={title} onClick={onClick}>
+      <ButtonContainer
+        type="button"
+        title={title}
+        onClick={onClick}
+        bgColor={bgColor}
+        disabled={disabled} // para fechar cart
+      >
         {children}
       </ButtonContainer>
     )
   }
 
-  return (
-    <ButtonLink to={to as string} title={title} onClick={onClick}>
-      <Link to="/menu">Saiba mais</Link>
-    </ButtonLink>
-  )
+  if (type === 'link' && to) {
+    return (
+      <ButtonLink to={to} title={title} bgColor={bgColor}>
+        {children}
+      </ButtonLink>
+    )
+  }
+
+  return null
 }
-export default Button //Exportar para: Banner,
+
+export default Button

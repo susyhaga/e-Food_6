@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../global'
 import trash from '../../assets/images/trash.png'
-import { ButtonContainer } from '../Button/styles'
+import { ButtonContainer, ButtonLink } from '../Button/styles'
 
 export const OverLay = styled.div`
   position: absolute;
@@ -88,13 +88,18 @@ export const ProductInfos = styled.div`
     bottom: 8px;
   }
 `
-//componentes estilizados para textos
+
 export const Prices = styled.p`
-  display: flex; /* Habilita o Flexbox */
-  justify-content: space-between; /* Distribui os itens ao longo do eixo principal */
-  align-items: center; /* Alinha verticalmente no centro */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-weight: bold;
   font-size: 16px;
   color: ${cores.rosaclaro};
   margin-bottom: 24px;
+`
+
+export const Button = styled(ButtonLink)`
+  color: ${cores.rosa};
+  background-color: ${cores.rosaclaro};
 `

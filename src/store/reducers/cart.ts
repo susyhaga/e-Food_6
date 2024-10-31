@@ -41,9 +41,12 @@ const cartSlice = createSlice({
       if (index !== -1) {
         state.items.splice(index, 1)
       }
+    },
+    clearCart(state) {
+      state.items = [] // Esvazia o array de itens
     }
   }
 })
 
-export const { open, close, addItem, removeItem } = cartSlice.actions
+export const { open, close, addItem, removeItem, clearCart } = cartSlice.actions
 export default cartSlice.reducer

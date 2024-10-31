@@ -9,7 +9,7 @@ export const breakpoints = {
 export const cores = {
   rosa: '#E66767',
   rosaclaro: '#FFEBD9',
-  amarela: '#FFB930',
+  amarela: '#fbc531',
   overlay: 'rgba(0, 0, 0, 0.8)',
   branca: 'rgba(255, 255, 255, 1)'
 }

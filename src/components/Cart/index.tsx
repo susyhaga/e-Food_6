@@ -1,15 +1,17 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../components/Button'
 import { OverLay, CartContainer, Sidebar, Prices, ProductInfos } from './styles'
 import { RootReducer } from '../../store'
 import { close, removeItem } from '../../store/reducers/cart'
+import DeliveryForm from '../DeliveryForm'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
+  const [showDelivery, setShowDelivery] = useState(false)
 
   const closeCart = () => {
-    console.log('Fechando carrinho...')
     dispatch(close())
   }
 
@@ -17,15 +19,36 @@ const Cart = () => {
     event.stopPropagation()
   }
 
-  // Debugging
-  console.log('Itens no carrinho:', items)
+  const handleComplete = () => {
+    closeCart()
+    setShowDelivery(false)
+  }
 
-  const totalPrice = items.reduce((total, item) => {
-    console.log(`Item: ${item.name}, Preço: ${item.price}`)
-    return total + (typeof item.price === 'number' ? item.price : 0)
-  }, 0)
+  const totalPrice = items.reduce(
+    (total, item) => total + (typeof item.price === 'number' ? item.price : 0),
+    0
+  )
 
-  console.log('Preço total:', totalPrice) // Verifique o total
+  // Renderiza o formulário de entrega se `showDelivery` for true
+  if (showDelivery) {
+    return (
+      <DeliveryForm
+        onClose={() => setShowDelivery(false)}
+        onComplete={handleComplete}
+        title="Formulário de Entrega"
+      />
+    )
+  }
+
+  const handleContinue = () => {
+    if (items.length === 0) {
+      alert(
+        'Por favor, adicione pelo menos um item ao carrinho antes de continuar com a entrega.'
+      )
+      return
+    }
+    setShowDelivery(true)
+  }
 
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
@@ -49,7 +72,7 @@ const Cart = () => {
                 <button
                   className="trash-button"
                   type="button"
-                  onClick={() => dispatch(removeItem(item))} // Passando o objeto item
+                  onClick={() => dispatch(removeItem(item))}
                 />
               </ProductInfos>
             </li>
@@ -58,7 +81,12 @@ const Cart = () => {
         <Prices>
           Valor total<span>R$ {totalPrice.toFixed(2)}</span>
         </Prices>
-        <Button title="Clique aqui para continuar com a compra" type="button">
+        <Button
+          title="Clique aqui para continuar com a compra"
+          type="button"
+          onClick={handleContinue}
+          disabled={items.length === 0}
+        >
           Continuar com a entrega
         </Button>
       </Sidebar>

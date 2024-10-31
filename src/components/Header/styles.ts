@@ -23,6 +23,7 @@ export const ImgHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 18px;
 
   .container {
     display: flex;
@@ -33,7 +34,7 @@ export const ImgHeader = styled.div`
     width: 100%;
     white-space: nowrap;
     gap: 19rem;
-    padding-left: 6px;
+    padding-left: 14px;
 
     button {
       border: none;
@@ -90,7 +91,6 @@ export const RestImg = styled.div`
     z-index: 1;
     color: ${cores.branca};
     font-size: 32px;
-    padding-left: 6px;
 
     @media (max-width: 768px) {
       font-size: 24px;
