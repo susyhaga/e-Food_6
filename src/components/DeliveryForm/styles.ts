@@ -41,6 +41,7 @@ export const CardContainer = styled.aside`
     display: flex;
     align-items: start;
     font-weight: bold;
+    margin-top: 32px;
 
     margin-bottom: 16px;
     h2 {
