@@ -38,8 +38,8 @@ export const Sidebar = styled.aside`
   ${ButtonContainer} {
     max-width: 100%;
     width: 327px;
-    margin-right: 8px;
     margin-top: 16px;
+    margin-left: 8px;
     background-color: ${cores.rosaclaro};
     color: ${cores.rosa};
     border: none;
