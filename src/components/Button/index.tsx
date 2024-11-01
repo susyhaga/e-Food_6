@@ -7,7 +7,7 @@ type Props = {
   onClick?: () => void // recebe uma função sem argumento
   children: string
   bgColor?: string
-  disabled?: boolean // Adicione esta linha
+  disabled?: boolean
 }
 
 const Button = ({

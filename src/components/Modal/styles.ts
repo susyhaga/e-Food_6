@@ -69,10 +69,13 @@ export const Description = styled.p`
 export const Button = styled.button`
   background-color: ${cores.branca};
   color: ${cores.rosa};
-  width: 204px;
-  height: 16px;
+  width: 230px;
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
   border: none;
   cursor: pointer;
   margin-top: 20px;
   font-weight: bold;
+  font-size: 14px;
 `

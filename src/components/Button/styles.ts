@@ -6,8 +6,8 @@ export const ButtonContainer = styled.button<{
   bgColor?: string
   color?: string
 }>`
-  color: ${({ color }) => color || cores.rosaclaro};
-  background-color: ${({ bgColor }) => bgColor || cores.rosa};
+  color: ${({ color }) => color || cores.rosa};
+  background-color: ${({ bgColor }) => bgColor || cores.rosaclaro};
   font-size: 16px;
   font-weight: bold;
   padding: 8px 16px;
